@@ -1,0 +1,6 @@
+.text-truncate {
+  white-space: nowrap;         /* Prevents the text from wrapping to the next line */
+  overflow: hidden;            /* Ensures that any overflow is hidden */
+  text-overflow: ellipsis;     /* Adds an ellipsis (...) at the end of the truncated text */
+  width: 200px;                /* Set a fixed width to see the effect */
+}

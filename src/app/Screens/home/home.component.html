@@ -1,0 +1,61 @@
+<!-- src/app/app.component.html -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <img src="../../../assets/images/Screeens/whitelogo.png" alt="" class="img-fluid pt-10" style="min-height: 120px;">
+    </div>
+    <div class="col-lg-12 ">
+      <h2 class="hometitle pt-10">
+        Spotted,
+      </h2>
+      <h2 class="hometitle">
+        Le "Waze"
+      </h2>
+      <div #typewriterContainer class="hometitle mb-2 typewriter-container"></div>
+    </div>
+    <div class="col-lg-12">
+      <img src="../../../assets/images/Screeens/HomeVector.png" alt="" class="img-fluid">
+    </div>
+    <div class="col-lg-12" *ngIf="!isAuthenticated()">
+      <div class="d-flex justify-content-center pb-10">
+        <button
+        routerLink="/login"
+        type="button"
+        class="btn btn-dark px-5 py-2 rounded-2 shadow me-2 text-white"
+        >
+        Connexion
+       </button>
+
+        <button
+        routerLink="/Connexion"
+        type="button"
+        class="btn btn-white px-5 py-2 rounded-2  shadow ms-2"
+       >
+       Inscription
+       </button>
+
+      </div>
+    </div>
+    <div class="col-lg-12" *ngIf="isAuthenticated()">
+      <div class="d-flex justify-content-center pb-10">
+        <button
+        *ngIf="userRole=='User'"
+        routerLink="/userHome"
+        type="button"
+        class="btn btn-dark px-5 py-2 rounded-2 shadow me-2 text-white"
+        >
+        Continue to Application
+       </button>
+       <button
+        *ngIf="userRole=='Administrator'"
+        routerLink="/Admin"
+        type="button"
+        class="btn btn-dark px-5 py-2 rounded-2 shadow me-2 text-white"
+        >
+        Continue to Application
+       </button>
+      </div>
+    </div>
+  </div>
+</div>
+

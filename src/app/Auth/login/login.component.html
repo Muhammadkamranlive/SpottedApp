@@ -1,0 +1,86 @@
+<div class="container-fluid bg-light">
+  <div class="row">
+    <div class="col-lg-12">
+      <img src="../../../assets/images/Screeens/button back.png" alt="" class="img-fluid ps-4 pt-7" routerLink="/" >
+    </div>
+    <div class="col-lg-12 text-center">
+      <img src="../../../assets/images/Screeens/blueIconLogo.png" alt="" class="img-fluid mt-n8" style="min-height: 50px;">
+    </div>
+    <div class="col-lg-12">
+      <h2 class=" ps-3 pt-2 hometitle text-dark">
+        Connexion
+      </h2>
+      <p class="px-5 text-small">
+        Entrez l’email que vous avez utilisez pour vous inscrire.
+      </p>
+    </div>
+    <div class="col-lg-12">
+      <form  class="px-4" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="form-group mb-3">
+          <input type="email" class="form-control form-control-lg" placeholder="Email"   formControlName="email">
+          <div class="error-message text-danger" *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+            <ng-container *ngIf="userForm.get('email')?.hasError('required')">Email is Required</ng-container>
+            <ng-container *ngIf="userForm.get('email')?.hasError('email')">Email format is incorret</ng-container>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <div class="input-group ">
+            <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control form-control-lg" placeholder=" Password"  formControlName="password">
+            <span class="input-group-text" id="basic-addon1" (click)="togglePasswordVisibility()">
+              <i class="fa-solid fa-eye-slash"></i>
+            </span>
+          </div>
+          <div class="error-message text-danger" *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched">
+            <ng-container *ngIf="userForm.get('password')?.hasError('required')">Password is Required</ng-container> <br>
+            <ng-container *ngIf="userForm.get('password')?.hasError('minlength')">
+              Please ensure your password is at least <br> 6 characters long and includes at least one uppercase letter, <br> one lowercase letter, one number, and one special character.
+            </ng-container>
+          </div>
+        </div>
+        <div class="form-group mb-5">
+          <p class="text-small">Mot de passe <a routerLink="/forgetPass">oubliée</a> ? </p>
+        </div>
+        <div class="form-group  d-grid">
+          <button type="submit" class="btn btn-primary shadow-lg rounded-4 btn-lg shadowfilter" *ngIf="loading"><div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+         </button>
+          <button type="submit"  [disabled]="userForm.invalid"  class="btn btn-primary shadow-lg rounded-4 btn-lg shadowfilter" *ngIf="!loading">Connexion</button>
+        </div>
+      </form>
+      <div class="text-center">
+        <h4>
+          ou
+        </h4>
+      </div>
+      <div class="px-4">
+        <div class="form-group mb-5 d-grid">
+          <button type="submit" class="btn btn-primary shadow-lg rounded-4 btn-lg shadowfilter" *ngIf="SocialLoading"><div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+         </button>
+          <button type="button" class="btn btn-white shadow-lg rounded-4 btn-lg shadowfilter" *ngIf="!SocialLoading" (click)="googleSignIn()">
+            <img src="../../../assets/images/Screeens/google.png" alt="" class="img-fluid mt-n2">
+            Continue with Google
+          </button>
+        </div>
+        <div class="form-group mb-2 d-grid">
+          <button type="submit" class="btn btn-primary shadow-lg rounded-4 btn-lg shadowfilter" *ngIf="SocialLoading"><div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+         </button>
+          <button type="button" class="btn btn-white shadow-lg rounded-4 btn-lg shadowfilter" (click)="appleSignIn()" *ngIf="!SocialLoading">
+            <img src="../../../assets/images/Screeens/Group.png" alt="" class="img-fluid mt-n2">
+            Continue with Apple
+          </button>
+        </div>
+
+        <div class="form-group pb-5 d-grid text-center">
+          <p class="px-3">
+            Pas de compte ? . <a href="/Connexion">Créez un nouveau compte</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+.stepper {
+  width: 100%;
+  position: relative;
+}
+
+.step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+.step-icon {
+  z-index: 1;
+}
+
+.step-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% - 80px);
+  height: 2px;
+  background-color: #e0e0e0;
+  z-index: 0;
+}
+
+.step-line.active {
+  background-color: #007bff;
+}
+
+.step:first-child .step-line {
+  left: 50%;
+}
+
+.step:last-child .step-line {
+  display: none;
+}

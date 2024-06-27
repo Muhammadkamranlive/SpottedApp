@@ -1,0 +1,23 @@
+.container-fluid {
+  background-color: aliceblue;
+}
+.form-control{
+  border: none !important;
+}
+.container-fluid {
+  min-height: 100vh; /* Allows the container to expand vertically */
+  width: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+.container {
+  padding: 0px !important;
+  margin: 0 !important;
+}

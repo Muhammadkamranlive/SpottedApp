@@ -1,0 +1,6 @@
+.container-fluid {
+  background-color: aliceblue;
+}
+.form-control{
+  border: none !important;
+}

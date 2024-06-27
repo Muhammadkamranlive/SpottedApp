@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">spotted</string>
+    <string name="title_activity_main">spotted</string>
+    <string name="package_name">com.spotted.app</string>
+    <string name="custom_url_scheme">com.spotted.app</string>
+</resources>

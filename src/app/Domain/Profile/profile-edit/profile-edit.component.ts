@@ -1,0 +1,177 @@
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserDetail } from '../../../Models/Authentication/UserModel';
+import { AuthService } from '../../../Services/auth.service';
+import { BaseApiService } from '../../../Services/base-api.service';
+import { MessageService } from '../../../Services/message.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthResponseModel } from '../../../Models/Authentication/AuthResponse';
+import { ImageUploadService } from '../../../Services/image-upload-service.service';
+
+@Component({
+  selector: 'app-profile-edit',
+  templateUrl: './profile-edit.component.html',
+  styleUrl: './profile-edit.component.css'
+})
+export class ProfileEditComponent implements OnInit {
+  @ViewChild('imageElement', { static: false }) imageElement!: ElementRef<HTMLImageElement>;
+  loading:boolean=false;
+  Gender: string[] = ['Male','Femal','Other']
+  countries: string[] = [
+    'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Australia', 'Austria',
+    'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bhutan',
+    'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Brazil', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cabo Verde', 'Cambodia',
+    'Cameroon', 'Canada', 'Central African Republic', 'Chad', 'Chile', 'China', 'Colombia', 'Comoros', 'Congo (Congo-Brazzaville)', 'Costa Rica',
+    'Croatia', 'Cuba', 'Cyprus', 'Czechia (Czech Republic)', 'Democratic Republic of the Congo', 'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'Ecuador',
+    'Egypt', 'El Salvador', 'Equatorial Guinea', 'Eritrea', 'Estonia', 'Eswatini (fmr. "Swaziland")', 'Ethiopia', 'Fiji', 'Finland', 'France',
+    'Gabon', 'Gambia', 'Georgia', 'Germany', 'Ghana', 'Greece', 'Grenada', 'Guatemala', 'Guinea', 'Guinea-Bissau',
+    'Guyana', 'Haiti', 'Holy See', 'Honduras', 'Hungary', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq',
+    'Ireland', 'Israel', 'Italy', 'Jamaica', 'Japan', 'Jordan', 'Kazakhstan', 'Kenya', 'Kiribati', 'Kuwait',
+    'Kyrgyzstan', 'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg',
+    'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Mauritania', 'Mauritius', 'Mexico',
+    'Micronesia', 'Moldova', 'Monaco', 'Mongolia', 'Montenegro', 'Morocco', 'Mozambique', 'Myanmar (formerly Burma)', 'Namibia', 'Nauru',
+    'Nepal', 'Netherlands', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'North Korea', 'North Macedonia', 'Norway', 'Oman',
+    'Pakistan', 'Palau', 'Palestine State', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines', 'Poland', 'Portugal',
+    'Qatar', 'Romania', 'Russia', 'Rwanda', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Vincent and the Grenadines', 'Samoa', 'San Marino', 'Sao Tome and Principe',
+    'Saudi Arabia', 'Senegal', 'Serbia', 'Seychelles', 'Sierra Leone', 'Singapore', 'Slovakia', 'Slovenia', 'Solomon Islands', 'Somalia',
+    'South Africa', 'South Korea', 'South Sudan', 'Spain', 'Sri Lanka', 'Sudan', 'Suriname', 'Sweden', 'Switzerland', 'Syria',
+    'Tajikistan', 'Tanzania', 'Thailand', 'Timor-Leste', 'Togo', 'Tonga', 'Trinidad and Tobago', 'Tunisia', 'Turkey', 'Turkmenistan',
+    'Tuvalu', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States of America', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Venezuela',
+    'Vietnam', 'Yemen', 'Zambia', 'Zimbabwe'
+  ];
+  userId:string;
+  user!:UserDetail
+  Email    !: string;
+  userForm !: FormGroup;
+  res!:AuthResponseModel
+  imageUrl: string | ArrayBuffer | null = null;
+  constructor
+  (
+    private auth: AuthService,
+    private messageService: MessageService,
+    private api: BaseApiService,
+    private router:Router,
+    private formBuilder    : FormBuilder,
+    private imageUploadService: ImageUploadService
+  )
+  {
+
+    this.userId   = this.auth.getUID();
+    this.Email    = this.auth.getLoggedEmail();
+  }
+
+  getdata(uid:any)
+  {
+    this.loading=true;
+    this.api.read(`Auth/getProfile?uid=${uid}`).subscribe
+    (
+      (response)=>{
+        this.user    = response;
+        this.userForm.patchValue({
+          image:this.user.image,
+          legalname:this.user.legalname,
+          surname:this.user.surname,
+          country:this.user.country,
+          gender:this.user.gender,
+          address:this.user.addresss,
+          postalCode:this.user.postalCode,
+          nikName:this.user.nickName,
+          appartment:this.user.appartment,
+          city:this.user.city
+        })
+        this.loading = false;
+      }
+      ,(
+        error
+      )=>{
+
+        this.loading=false;
+        this.messageService.showErrorAlert(error);
+      }
+    )
+  }
+
+  onSubmit()
+  {
+   if(this.userForm.valid)
+      {
+        this.loading = true;
+        this.api.update("Auth/UpdateProfile", this.userForm.value).subscribe
+        (
+          (response) =>
+          {
+            this.res=response
+            if(this.res.message.includes("OK"))
+            {
+              this.auth.settingPayLoad(this.res);
+              this.messageService.showSuccessAlert("User Profile information is updated successfully.");
+              this.loading = false;
+            }
+           else
+           {
+              this.messageService.showErrorAlert(response.message);
+              this.loading = false;
+           }
+
+          },
+          (error) => {
+            this.loading = false;
+            this.messageService.showSuccessAlert(error);
+          }
+        );
+   }
+   else{
+    this.messageService.showSuccessAlert("Please provide neccessary details");
+   }
+
+  }
+
+
+  initializeForm() {
+    this.userForm = this.formBuilder.group
+    ({
+      email: [this.Email],
+      image  : ['',],
+      legalname:[''],
+      surname:[''],
+      country:['',Validators.required],
+      gender:[''],
+      address:[''],
+      postalCode:[''],
+      nikName:[''],
+      appartment:[''],
+      city:['']
+    });
+  }
+
+
+  triggerFileInput(fileInput: HTMLInputElement) {
+    fileInput.click();
+  }
+
+
+  onFileChange(event: Event): void {
+
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    if (file) {
+       this.imageUploadService.uploadImage(file).subscribe(
+        (imageUrl: string) => {
+          this.imageUrl = imageUrl;
+          this.userForm.get('image')?.setValue(imageUrl);
+          this.onSubmit();
+          this.loading = false;
+        },
+        (error) => {
+          this.loading = false;
+          this.messageService.showErrorAlert(error);
+        }
+      );
+    }
+  }
+  ngOnInit(): void {
+    this.initializeForm();
+    this.getdata(this.userId);
+  }
+
+}

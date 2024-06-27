@@ -1,0 +1,92 @@
+<app-top-bar></app-top-bar>
+<div class="container-fluid bg-light mb-10">
+<div class="row mt-10">
+ <div class="container">
+  <div class="row ">
+    <div class="col-lg-12">
+      <h2 class="px-10 pt-4" style="font-size: 32px;">Signaler</h2>
+      <br>
+      <p class="small-text text-left px-10 mt-n3">Communiquer ou de divulguer une fausse information faisant croire à un sinistre et de nature à provoquer une intervention des personnels de secours est, en principe, puni de deux ans d'emprisonnement et de
+        30 000 euros d'amende.</p>
+    </div>
+    <div class="col-lg-12">
+      <div class="d-flex justify-content-center">
+        <div class="text-center">
+          <button
+            type="button"
+            (click)="setSignalType('suspect')"
+            [class.active]="selectedSignalType === 'suspect'"
+            class="btn btn-icon p-4 border-4 ms-3 shadow-lg"
+            style="background-color: #FFC52F; border-radius: 15px;">
+            <img src="../../../assets/images/Screeens/sss.png" alt="">
+          </button>
+          <h6 class="ps-3" [style.color]="selectedSignalType === 'suspect' ? '#FFC52F' : 'initial'">suspect</h6>
+        </div>
+        <div class="text-center">
+          <button
+            type="button"
+            (click)="setSignalType('Agression')"
+            [class.active]="selectedSignalType === 'Agression'"
+            class="btn btn-icon p-4 border-4 ms-3 shadow-lg"
+            style="background-color: #FF7B31; border-radius: 15px;">
+            <img src="../../../assets/images/Screeens/sss.png" alt="">
+          </button>
+          <h6 class="ps-3" [style.color]="selectedSignalType === 'Agression' ? '#FF7B31' : 'initial'">Agression</h6>
+        </div>
+        <div class="text-center">
+          <button
+            type="button"
+            (click)="setSignalType('Vol')"
+            [class.active]="selectedSignalType === 'Vol'"
+            class="btn btn-icon p-4 border-4 ms-3 shadow-lg"
+            style="background-color: #FF3131; border-radius: 15px;">
+            <img src="../../../assets/images/Screeens/sss.png" alt="">
+          </button>
+          <h6 class="ps-3" [style.color]="selectedSignalType === 'Vol' ? '#FF3131' : 'initial'">Vol</h6>
+        </div>
+        <div class="text-center">
+          <button
+            type="button"
+            (click)="setSignalType('Agression Sexuel')"
+            [class.active]="selectedSignalType === 'Agression Sexuel'"
+            class="btn btn-icon p-4 border-4 ms-3 shadow-lg"
+            style="background-color: #9747FF; border-radius: 15px;">
+            <img src="../../../assets/images/Screeens/sss.png" alt="">
+          </button>
+          <h6 class="ps-3" [style.color]="selectedSignalType === 'Agression Sexuel' ? '#9747FF' : 'initial'">Agression Sexuel</h6>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-lg-12">
+      <form class="px-4 pt-10 pb-10" [formGroup]="userForm" >
+        <div class="form-group mb-2">
+          <input type="text" class="form-control form-control-lg" placeholder="Rue et numéro" #autocomplete formControlName="title" >
+        </div>
+        <div class="form-group mb-2">
+          <input type="datetime-local" class="form-control form-control form-control-lg" placeholder="Heure" formControlName="when">
+        </div>
+        <div class="form-group mb-2">
+          <label for="" class="form-label">
+            Optionel
+          </label>
+          <textarea rows="10"  name="" id="" class="form-control form-control form-control-lg" formControlName="description">
+            Description
+          </textarea>
+        </div>
+        <div class="pb-10 d-flex justify-content-between px-4 mt-3">
+        <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+         <label class="form-check-label" for="flexCheckChecked">
+          J’accepte les CGU
+         </label>
+        </div>
+        <button class="btn btn-primary shadowfilter px-5" type="submit"  [disabled]="userForm.invalid"  *ngIf="!loading" (click)="onSubmit()">signaler</button>
+        </div>
+      </form>
+    </div>
+  </div>
+ </div>
+</div>
+</div>
+<app-bottom-navigation></app-bottom-navigation>

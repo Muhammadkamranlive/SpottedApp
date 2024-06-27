@@ -1,0 +1,60 @@
+<div class="container-fluid bg-light">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <img src="../../../assets/images/Screeens/blueIconLogo.png" alt="" class="img-fluid mt-7" style="height: 50px;">
+    </div>
+    <div class="col-lg-12  d-flex justify-content-end align-items-end" routerLink="/userHome">
+      <i class="fa-solid fa-xmark" style="font-size: 35px; padding-right: 40px;margin-top: -90px; "></i>
+    </div>
+    <div class="col-lg-12">
+      <form  class="px-4 text-center pt-20">
+        <h2 class="fw-bolder">
+          Pour un trajet plus sûr !
+        </h2>
+        <p class="mb-5">Traquer et signalez les vols et agressions <br>Utilisez notre gps intelligent <br>Discuter une communauté bienveillante</p>
+
+        <div class="form-group mb-5 d-grid">
+          <button type="button" class="btn btn-primary shadow-lg rounded-2  btn-lg shadowfilter d-flex justify-content-between" >
+            <small>Pas sûr ? Activer une période d’essai</small>
+            <div class="form-check form-switch">
+              <input type="checkbox" class="form-check-input" id="stripeSwitch1" (change)="StartTrial()">
+           </div>
+          </button>
+          <button type="button" class="btn btn-primary rounded-2  btn-lg  d-flex justify-content-between my-4" >
+            <small> 1 mois, 11.99€</small>
+            <div class="form-check form-switch">
+              <input type="checkbox" class="form-check-input" id="stripeSwitch1" (change)="setPriceId('price_1PVd4D096TMSX8WQeSGkDH4t')">
+           </div>
+          </button>
+          <button type="button" class="btn btn-white  rounded-2  btn-lg  d-flex justify-content-between mb-4" >
+            <small> 1 semaine, 5.99€</small>
+            <div class="form-check form-switch">
+              <input type="checkbox" class="form-check-input" id="stripeSwitch1" (change)="setPriceId('price_1PVd1B096TMSX8WQua5mSi5j')">
+           </div>
+          </button>
+          <button type="submit" class="btn btn-primary shadow-lg rounded-2 btn-lg shadowfilter" *ngIf="loading">
+            <div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+         </button>
+          <button type="button" class="btn btn-primary shadow-lg rounded-2 btn-lg shadowfilter" *ngIf="!loading" (click)="onSubmit()">
+            S’abonner
+         </button>
+         <div class="d-flex justify-content-center my-5">
+          <p class="fw-bold me-4">
+            Aide
+          </p>
+          <p class="fw-bold">
+            Restaurer
+          </p>
+         </div>
+         <p class="text-small">
+          En continuant, vous acceptez
+         </p>
+         <a  class="mb-5">Politique de confidentialité et conditions générales</a>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

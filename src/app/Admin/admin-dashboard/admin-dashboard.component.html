@@ -1,0 +1,189 @@
+
+<app-top-bar></app-top-bar>
+<div class="container-fluid bg-light mb-10">
+<div class="row">
+ <div class="container">
+  <div class="row no-gutters mb-3 px-2 mb-20">
+    <div class="col-lg-12">
+      <div class="border-bottom pb-4 mb-4 d-lg-flex justify-content-between align-items-center mt-15">
+        <div class="mb-3 mb-lg-0">
+          <h1 class="mb-0 h2 fw-bold">Admin Dashboard</h1>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-3">
+      <!-- Card -->
+      <div class="card mb-4 h-100 d-flex flex-column justify-content-between" [routerLink]="['/Signal','suspect']">
+        <!-- Card body -->
+        <div class="card-body">
+          <span class="fs-6 text-uppercase fw-semibold">Suspects</span>
+          <div class="mt-2 d-flex justify-content-between align-items-center">
+            <div class="lh-1">
+              <h2 class="h1 fw-bold mb-1">{{signalSuspect.length}}</h2>
+            </div>
+            <div>
+              <button
+              type="button"
+              class="btn btn-icon p-4 border-4 ms-3 shadow-lg"
+              style="background-color: #FFC52F; border-radius: 15px;">
+              <img src="../../../assets/images/Screeens/sss.png" alt="">
+            </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-3">
+      <!-- Card -->
+      <div class="card mb-4 h-100 d-flex flex-column justify-content-between" [routerLink]="['/Signal','Agression']">
+        <!-- Card Body -->
+        <div class="card-body">
+          <span class="fs-6 text-uppercase fw-semibold">Aggressions</span>
+          <div class="mt-2 d-flex justify-content-between align-items-center">
+            <div class="lh-1">
+              <h2 class="h1 fw-bold mb-1">{{signalAggression.length}}</h2>
+              <span></span>
+            </div>
+            <div>
+              <button
+              type="button"
+              class="btn btn-icon p-4 border-4 ms-3 shadow-lg"
+              style="background-color: #FF7B31; border-radius: 15px;">
+              <img src="../../../assets/images/Screeens/sss.png" alt="">
+            </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-3">
+      <!-- Card -->
+      <div class="card mb-4 h-100 d-flex flex-column justify-content-between" [routerLink]="['/Signal','Vol']">
+        <!-- Card Body -->
+        <div class="card-body">
+          <span class="fs-6 text-uppercase fw-semibold">Vol</span>
+          <div class="mt-2 d-flex justify-content-between align-items-center">
+            <div class="lh-1">
+              <h2 class="h1 fw-bold mb-1">{{signalVol.length}}</h2>
+              <span></span>
+            </div>
+            <div class="mt-4">
+              <button
+              type="button"
+              class="btn btn-icon p-4 border-4 ms-3 shadow-lg"
+              style="background-color: #FF3131; border-radius: 15px;">
+              <img src="../../../assets/images/Screeens/sss.png" alt="">
+            </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-3">
+      <!-- Card -->
+      <div class="card mb-4 h-100 d-flex flex-column justify-content-between" [routerLink]="['/Signal','Agression Sexuel']">
+        <!-- Card Body -->
+        <div class="card-body">
+          <span class="fs-6 text-uppercase fw-semibold">Agression Sexuel</span>
+          <div class="mt-2 d-flex justify-content-between align-items-center">
+            <div class="lh-1">
+              <h2 class="h1 fw-bold mb-1">{{signalSexual.length}}</h2>
+              <span></span>
+            </div>
+            <div>
+              <button
+              type="button"
+              class="btn btn-icon p-4 border-4 ms-3 shadow-lg"
+              style="background-color: #9747FF; border-radius: 15px;">
+              <img src="../../../assets/images/Screeens/sss.png" alt="">
+             </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mb-3">
+      <!-- Card -->
+      <div class="card mb-4 h-100 d-flex flex-column justify-content-between" routerLink="/Users">
+        <!-- Card body -->
+        <div class="card-body">
+          <span class="fs-6 text-uppercase fw-semibold">Users</span>
+          <div class="mt-2 d-flex justify-content-between align-items-center">
+            <div class="lh-1">
+              <h2 class="h1 fw-bold mb-1">{{Users.length}}</h2>
+              <span>Admins {{Admins.length}}</span>
+            </div>
+            <div>
+              <span class="bg-primary btn btn-icon p-4 border-4 ms-3 shadow-lg">
+                <i class="fa-solid fa-user-tie text-white"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mb-3">
+      <!-- Card -->
+      <div class="card mb-4 h-100 d-flex flex-column justify-content-between" [routerLink]="['/Notify',userid]">
+        <!-- Card Body -->
+        <div class="card-body">
+          <span class="fs-6 text-uppercase fw-semibold">Notifications</span>
+          <div class="mt-2 d-flex justify-content-between align-items-center">
+            <div class="lh-1">
+              <h2 class="h1 fw-bold mb-1">{{notifications.length}}</h2>
+              <span></span>
+            </div>
+            <div>
+              <span class="bg-secondary btn btn-icon p-4 border-4 ms-3 shadow-lg">
+                <i class="bi bi-bell " style="color: #fff !important;"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mb-3">
+      <!-- Card -->
+      <div class="card mb-4 h-100 d-flex flex-column justify-content-between">
+        <!-- Card Body -->
+        <div class="card-body">
+          <span class="fs-6 text-uppercase fw-semibold">App Logs</span>
+          <div class="mt-2 d-flex justify-content-between align-items-center">
+            <div class="lh-1">
+              <h2 class="h1 fw-bold mb-1">{{logs.length}}</h2>
+              <span></span>
+            </div>
+            <div>
+              <span class="bg-success btn btn-icon p-4 border-4 ms-3 shadow-lg">
+                <i class="fas fa-history text-white"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mb-3">
+      <!-- Card -->
+      <div class="card mb-4 h-100 d-flex flex-column justify-content-between" routerLink="/Payments">
+        <!-- Card Body -->
+        <div class="card-body">
+          <span class="fs-6 text-uppercase fw-semibold">Payments</span>
+          <div class="mt-2 d-flex justify-content-between align-items-center">
+            <div class="lh-1">
+              <h2 class="h1 fw-bold mb-1">{{amount}}</h2>
+              <span></span>
+            </div>
+            <div>
+              <span class="bg-dark btn btn-icon p-4 border-4 ms-3 shadow-lg">
+                <i class="fa-solid fa-euro-sign text-white"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ </div>
+</div>
+</div>
+<app-bottom-navigation></app-bottom-navigation>

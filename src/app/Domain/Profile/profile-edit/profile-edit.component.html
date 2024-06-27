@@ -1,0 +1,101 @@
+<nav class="fixed-top bg-white py-3  mb-3 ">
+  <div class="d-flex justify-content-start ">
+  <img src="../../../assets/images/Screeens/button back.png" alt="" class="img-fluid ps-3 pt-3"  style="height: 40px;" routerLink="/ProfileUser">
+   <h2 class="ps-10 fw-bold pt-3">Modifier le profil</h2>
+  </div>
+</nav>
+<div class="container-fluid bg-light" *ngIf="!loading">
+  <div class="row mt-16 mb-20">
+    <div class="col-lg-12 text-center" *ngIf="user != null">
+      <span class="avatar avatar-xl d-inline-block" *ngIf="imageUrl == null">
+        <img [src]="user.image" alt="" class="rounded-circle" >
+      </span>
+      <span class="avatar avatar-xl d-inline-block" *ngIf="imageUrl != null">
+        <img [src]="imageUrl" alt="" class="rounded-circle" >
+      </span>
+    </div>
+
+    <div class="col-lg-12 text-center mt-2">
+     <div class="text-center">
+      <input type="file" id="fileInput" (change)="onFileChange($event)" class="form-control" hidden #fileInput />
+      <button class="btn btn-white shadow bg-white rounded-4" (click)="triggerFileInput(fileInput)">
+        Changer Photo
+      </button>
+     </div>
+    </div>
+    <div class="col-lg-12">
+      <form  class="px-4 pt-6" [formGroup]="userForm" >
+        <div class="form-group mb-3">
+          <input type="text" class="form-control form-control-lg" placeholder="Nom légal" formControlName="legalname">
+          <div class="error-message text-danger" *ngIf="userForm.get('legalname')?.invalid && userForm.get('legalname')?.touched">
+            <ng-container *ngIf="userForm.get('legalname')?.hasError('required')">Name is required</ng-container>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <input type="text" class="form-control form-control-lg" placeholder="Prénom légal" formControlName="surname">
+          <div class="error-message text-danger" *ngIf="userForm.get('surname')?.invalid && userForm.get('surname')?.touched">
+            <ng-container *ngIf="userForm.get('surname')?.hasError('required')">Surname  is required</ng-container>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <input type="text" class="form-control form-control-lg" placeholder="Alias ( optionnel )" formControlName="nikName">
+        </div>
+        <div class="form-group mb-3">
+          <input type="email" class="form-control form-control-lg" placeholder="Email"   formControlName="email" style="background-color: #fff !important;">
+          <div class="error-message text-danger" *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+            <ng-container *ngIf="userForm.get('email')?.hasError('required')">Email is Required</ng-container>
+            <ng-container *ngIf="userForm.get('email')?.hasError('email')">Email format is incorret</ng-container>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between mb-3">
+          <select class="form-select form-select-lg" placeholder="Pays" formControlName="country">
+            <option value="" selected>Pays</option>
+            <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+          </select>
+          <div class="error-message text-danger" *ngIf="userForm.get('country')?.invalid && userForm.get('country')?.touched">
+            <ng-container *ngIf="userForm.get('country')?.hasError('required')">Surname  is required</ng-container>
+          </div>
+          <select class="form-select form-select-lg ms-2" placeholder="Sexe" formControlName="gender">
+            <option value="{{user.gender}}" selected>{{user.gender==''? "Sexe":user.gender}}</option>
+            <option *ngFor="let gender of Gender" [value]="gender">{{ gender }}</option>
+          </select>
+          <div class="error-message text-danger" *ngIf="userForm.get('gender')?.invalid && userForm.get('gender')?.touched">
+            <ng-container *ngIf="userForm.get('gender')?.hasError('required')">Gender is required</ng-container>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <input type="text" class="form-control form-control-lg" placeholder="Rue et numéro" formControlName="address" >
+          <div class="error-message text-danger" *ngIf="userForm.get('address')?.invalid && userForm.get('address')?.touched">
+            <ng-container *ngIf="userForm.get('address')?.hasError('required')">address  is required</ng-container>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <input type="text" class="form-control form-control-lg" placeholder="Numéro d’appartements, étage" formControlName="appartment">
+          <div class="error-message text-danger" *ngIf="userForm.get('appartment')?.invalid && userForm.get('appartment')?.touched">
+            <ng-container *ngIf="userForm.get('appartment')?.hasError('required')">This field is required</ng-container>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="">Optionel</label>
+          <input type="text" class="form-control form-control-lg" placeholder="Code postal" formControlName="postalCode">
+        </div>
+        <div class="form-group mb-5">
+          <input type="text" class="form-control form-control-lg" placeholder="Ville " formControlName="city">
+          <div class="error-message text-danger" *ngIf="userForm.get('city')?.invalid && userForm.get('city')?.touched">
+            <ng-container *ngIf="userForm.get('city')?.hasError('required')">city  is required</ng-container>
+          </div>
+
+        </div>
+        <div class="form-group mb-5 d-grid">
+          <button type="submit" class="btn btn-primary shadow-lg rounded-4 btn-lg shadowfilter" *ngIf="loading">
+            <div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+         </button>
+          <button type="button" (click)="onSubmit()" class="btn btn-primary shadow-lg rounded-4 btn-lg shadowfilter" *ngIf="!loading" >Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<app-spinner *ngIf="loading"></app-spinner>

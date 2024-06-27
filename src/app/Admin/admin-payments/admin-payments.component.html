@@ -1,0 +1,52 @@
+
+<app-admin-top-nav></app-admin-top-nav>
+<div class="container-fluid bg-light mb-10">
+<div class="row">
+ <div class="container">
+  <div class="row no-gutters">
+    <div class="col-lg-12">
+      <div class="border-bottom pb-4 mb-4 d-lg-flex justify-content-between align-items-center mt-15">
+        <div class="mb-3 mb-lg-0">
+          <h1 class="mb-0 h2 fw-bold">Payment Invoices</h1>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="row mb-3 px-2 mb-20" *ngIf="!loading">
+    <div class="col-12" *ngFor="let invoice of Payments">
+      <div class="card mb-3">
+        <div class="card-header d-flex justify-content-between">
+          Invoice #{{ invoice.invoiceNumber }}
+          <button class="btn btn-sm btn-primary shadowfilter" (click)="DonwloadTenantsPayments(invoice.id)" *ngIf="!loadButton">
+            Invoice
+          </button>
+          <button  class="btn btn-sm shadowfilter" *ngIf="loading">
+            <div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+         </button>
+          <a  href="{{downloadurl}}"   *ngIf="downloadurl!='' && itemId==invoice.id">
+            Download
+          </a>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Customer Email: {{ invoice.customerEmail }}</h5>
+          <p class="card-text">
+            <strong>Frequency:</strong> {{ invoice.frequency }}<br>
+            <strong>Created:</strong> {{ invoice.created | date:'medium' }}<br>
+            <strong>Amount:</strong> ${{ invoice.amount.toFixed(2) }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3 px-2 mb-20" *ngIf="loading">
+    <div class="col-12" >
+      <app-spinner></app-spinner>
+    </div>
+  </div>
+ </div>
+</div>
+</div>
+<app-bottom-navigation></app-bottom-navigation>

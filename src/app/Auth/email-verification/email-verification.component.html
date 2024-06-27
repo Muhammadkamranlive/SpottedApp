@@ -1,0 +1,53 @@
+<div class="container-fluid bg-light">
+  <div class="container">
+    <div class="row" >
+      <div class="d-flex justify-content-start pt-7">
+        <img src="../../../assets/images/Screeens/button back.png" alt="" class="img-fluid ps-5 pe-10" routerLink="/confirmEmail" >
+        <img src="../../../assets/images/Screeens/blueIconLogo.png" alt="" class="img-fluid ps-2" style="height: 50px;">
+      </div>
+
+      <div class="col-lg-12">
+        <h2 class=" ps-3 pt-15 hometitle text-dark">
+          Vérification
+        </h2>
+        <p class="px-5 text-small">
+          Un code de vérification vous a été envoyer dans votre boite mail.
+          Vérifiez vos spams.
+        </p>
+      </div>
+      <div class="col-lg-12">
+        <form class="px-4" [formGroup]="userForm" (ngSubmit)="confirmEmail()">
+          <div class="form-group mb-3 pt-4">
+            <label for="otp" class="ps-2 form-label">Email OTP</label>
+            <div class="d-flex justify-content-center">
+              <ng-otp-input  (onInputChange)="onOtpChange($event)"  [config]="config"></ng-otp-input>
+            </div>
+          </div>
+
+          <div class="form-group mb-5 d-grid">
+            <button type="submit" class="btn btn-primary shadow-lg rounded-4 btn-lg shadowfilter" *ngIf="loading">
+              <div class="spinner-border text-light" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </button>
+            <button type="submit" class="btn btn-primary shadow-lg rounded-4 btn-lg shadowfilter" *ngIf="!loading">Continuer</button>
+          </div>
+
+          <!-- <div class="form-group mb-5 d-flex justify-content-end">
+            <p class="pe-4"><a href="" class="text-danger">Renvoyer</a> : 00:50</p>
+          </div> -->
+        </form>
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>

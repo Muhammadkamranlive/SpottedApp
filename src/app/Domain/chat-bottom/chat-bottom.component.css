@@ -1,0 +1,48 @@
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 29px;
+  width: 100%;
+  background-color: rgb(239,239,239) !important;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  flex-grow: 1;
+  background-color: rgb(239,239,239) !important;
+}
+
+.search-bar input::placeholder {
+  color: #b0b0b0;
+}
+.search-bar input::after {
+  border: none !important;
+}
+.search-bar input:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+.search-bar button {
+  background: rgb(38,35,194);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  color: #fff;
+}
+
+.horizontal-buttons-container {
+  display: flex; /* Use flexbox to display items in a row */
+  justify-content: space-between; /* Adjust as needed for spacing between buttons */
+  align-items: center; /* Align items vertically in the center */
+}
+
+.horizontal-buttons-container p-button {
+  margin: 0 5px; /* Adjust margin between buttons */
+}
+.custom-sidebar {
+  height: 30rem !important; /* Set the height of the sidebar */
+}

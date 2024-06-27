@@ -1,0 +1,53 @@
+<div class="container-fluid bg-light">
+  <div class="row">
+    <div class="col-lg-12">
+      <img src="../../../assets/images/Screeens/button back.png" alt="" class="img-fluid ps-4 pt-7" routerLink="/Residence" >
+    </div>
+    <div class="col-lg-12 text-center">
+      <img src="../../../assets/images/Screeens/blueIconLogo.png" alt="" class="img-fluid mt-n8" style="height: 50px;">
+    </div>
+    <div class="col-lg-12">
+      <h2 class=" ps-3 pt-2 hometitle text-dark">
+        Adresse
+      </h2>
+      <p class="px-5 text-small">
+        Par la loi, on a besoin de votre adresse personnel pour créer votre compte.
+      </p>
+    </div>
+    <div class="col-lg-12">
+      <form  class="px-4" [formGroup]="userForm">
+        <div class="form-group mb-3">
+          <input type="text" class="form-control form-control-lg" placeholder="Rue et numéro" formControlName="address" #addressauto>
+          <div class="error-message text-danger" *ngIf="userForm.get('address')?.invalid && userForm.get('address')?.touched">
+            <ng-container *ngIf="userForm.get('address')?.hasError('required')">address  is required</ng-container>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <input type="text" class="form-control form-control-lg" placeholder="Numéro d’appartements, étage" formControlName="appartment">
+          <div class="error-message text-danger" *ngIf="userForm.get('appartment')?.invalid && userForm.get('appartment')?.touched">
+            <ng-container *ngIf="userForm.get('appartment')?.hasError('required')">This field is required</ng-container>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="">Optionel</label>
+          <input type="text" class="form-control form-control-lg" placeholder="Code postal" formControlName="postalCode">
+        </div>
+        <div class="form-group mb-5">
+          <input type="text" class="form-control form-control-lg" placeholder="Ville " formControlName="city">
+          <div class="error-message text-danger" *ngIf="userForm.get('city')?.invalid && userForm.get('city')?.touched">
+            <ng-container *ngIf="userForm.get('city')?.hasError('required')">city  is required</ng-container>
+          </div>
+
+        </div>
+        <div class="form-group mb-5 pb-5 d-grid">
+          <button type="submit" class="btn btn-primary shadow-lg rounded-4 btn-lg shadowfilter" *ngIf="loading"><div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+         </button>
+          <button type="submit" [disabled]="userForm.invalid" class="btn btn-primary shadow-lg rounded-4 btn-lg shadowfilter" *ngIf="!loading" (click)="onSubmit()">Continuer</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

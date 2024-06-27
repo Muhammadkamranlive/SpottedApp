@@ -1,0 +1,39 @@
+<div class="d-flex justify-content-between fixed-bottom bg-white py-2 pt-6" *ngIf="loading">
+  <div class="d-flex ps-5 mt-n4">
+    <div class="d-flex">
+      <span class="avatar avatar-lg avatar-primary">
+        <div class="skeleton-circle" style="height: 50px; width: 50px;"></div>
+      </span>
+    </div>
+    <div class="d-flex flex-column ps-2">
+      <div class="skeleton-card" style="height: 30px;"></div>
+    </div>
+  </div>
+  <a  class="pe-5 fw-bolder mt-n2" (click)="Logout()" >Logout</a>
+</div>
+<div class="d-flex justify-content-between fixed-bottom bg-white py-2 pt-6" *ngIf="!loading">
+  <div class="d-flex ps-5 mt-n4" *ngIf="user!=null">
+    <div class="d-flex">
+      <div class="position-relative me-5">
+        <img [src]="user.image" alt="" class="rounded-circle avatar-md" />
+        <a href="#" class="position-absolute mt-2 ms-n3" data-bs-toggle="tooltip" data-placement="top" title="Verifed">
+            <img [src]="GetBatch(user.batch)" alt="" height="30" width="30" />
+        </a>
+      </div>
+    </div>
+    <div class="d-flex flex-column ps-2">
+      <h3 >
+        {{user.legalname}}
+      </h3>
+      <p class="mt-n3 text-truncate" style="max-width: 150px;">
+        {{user.email}}
+       </p>
+       <a class="mt-n3" routerLink="/editProfile">View Profile</a>
+    </div>
+
+  </div>
+
+
+
+  <a  class="pe-5 fw-bolder mt-n2" (click)="Logout()">Logout</a>
+</div>

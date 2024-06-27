@@ -1,1 +1,445 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+/* General styles for SweetAlert2 */
+.swal2-popup {
+  font-size: 1.1rem; /* Example: Change font size */
+}
+.swal2-popup {
+  width: 300px!important; /* Adjust the width for mobile devices */
+  font-size: 1.1rem;
+  border-radius: 30px !important;
+}
+/* Custom class for SweetAlert2 dialog on mobile devices */
+@media (min-width: 600px) {
+  .swal2-popup {
+    min-height: 150px !important;
+    top: -20% !important; /* Adjust this value as needed */
+    transform: translateY(0%) !important; /* Center horizontally */
+    width: 300px!important; /* Adjust the width for mobile devices */
+    font-size: 1.1rem;
+    border-radius: 30px !important;
+  }
+
+  .swal2-icon {
+    width: 20px !important; /* Adjust icon size */
+    height: 20px !important; /* Adjust icon size */
+    font-size: 1.0rem !important; /* Adjust icon font size */
+  }
+}
+
+.swal2-custom-button {
+  background-color: rgb(38,35,194) !important; /* Example: Change button color */
+  color: #ffffff; /* Example: Change text color */
+  font-size: 1rem !important; /* Example: Change font size */
+  border-radius: 30px !important; /* Example: Change border radius */
+  padding: 6px 20px !important; /* Example: Change padding */
+  border: none !important; /* Remove border with !important */
+  outline: none !important;
+
+}
+
+.swal2-custom-button:hover {
+  background-color: rgb(38,35,194) !important;
+  border: none !important; /* Remove border with !important */
+  outline: none !important;
+  filter: drop-shadow(6px 6px 8px rgba(0, 0, 0, 0.2)); /* Example: Change button color on hover */
+}
+/* Custom class for SweetAlert2 icon */
+.swal2-custom-icon {
+  width: 70px; /* Example: Change icon size */
+  height: 70px; /* Example: Change icon size */
+}
+
+.swal2-custom-button1 {
+  background-color: rgb(219, 15, 0) !important; /* Example: Change button color */
+  color: #ffffff; /* Example: Change text color */
+  font-size: 1rem !important; /* Example: Change font size */
+  border-radius: 30px !important; /* Example: Change border radius */
+  padding: 6px 20px !important; /* Example: Change padding */
+  border: none !important; /* Remove border with !important */
+  outline: none !important;
+
+}
+
+.horizontal-buttons-container {
+  display: flex; /* Use flexbox to display items in a row */
+  justify-content: space-between; /* Adjust as needed for spacing between buttons */
+  align-items: center; /* Align items vertically in the center */
+}
+
+
+label{
+  font-size: 16px;
+  color: #000 !important;
+}
+
+#myverticalNav .active:hover{
+color: #fff !important;
+background-color: rgb(155,39,174);
+}
+
+#myverticalNav .active{
+  color: #fff !important;
+  background-color: rgb(155,39,174);
+ }
+
+
+
+.btn-primary
+{
+  background-color: #5d16ec !important ;
+  border: none !important;
+}
+
+.bg-primary
+{
+  background-color: #5d16ec !important;
+}
+
+
+
+[data-theme=dark] .js-navbar-vertical-aside
+{
+background-color:rgb(30,41,59) ;
+}
+
+[data-theme=dark] a
+{
+color: rgb(255,255,255) !important ;
+}
+
+[data-theme=dark] p
+{
+color: rgb(255,255,255) !important ;
+}
+
+[data-theme=dark] span
+{
+color: rgb(255,255,255) !important ;
+}
+
+[data-theme=dark] h1,[data-theme=dark] h2,[data-theme=dark] h3,[data-theme=dark] h4,[data-theme=dark] h5,[data-theme=dark] h6
+{
+color: rgb(255,255,255) !important ;
+}
+
+[data-theme=dark] .u-sidebar-nav-menu__item-icon {
+  color: rgb(255,255,255) !important ;
+}
+
+[data-theme=dark] small {
+  color: rgb(255,255,255) !important ;
+}
+
+
+[data-theme~=light] .js-navbar-vertical-aside
+{
+background-color:#fff ;
+}
+
+
+/* In your component's CSS or SCSS file */
+.spinner-container {
+  display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center; /* Vertical centering */
+  height: 100vh; /* Adjust this if needed to control the height */
+}
+
+
+[data-theme=dark] .form-control {
+ border: 2px solid #5d16ec !important;
+}
+
+[data-theme=dark] label {
+color: #fff !important;
+}
+
+[data-theme="dark"] .form-control::placeholder {
+  background-color: #fff !important;
+}
+
+[data-theme="dark"] .bg-primary{
+background-color: #5d16ec !important;
+}
+
+
+
+
+
+
+
+
+
+.zoom-container {
+  background-color: #ffffff;
+}
+
+
+.bi{
+color: #5d16ec !important;
+}
+
+
+.bottom{
+padding-bottom: 100px;
+}
+
+
+.box {
+
+animation: slowMove 3s infinite alternate; /* Use 'alternate' to move back and forth */
+}
+
+@keyframes slowMove {
+0% {
+    transform: translateY(0);
+  }
+
+100% {
+    transform: translateY(20px); /* Adjust the distance as needed */
+}
+}
+
+
+
+
+
+.bg-primary{
+background-color: #5d16ec !important;
+}
+
+.btn-primary{
+background-color:#5d16ec !important;
+}
+
+.text-primary{
+color:#5d16ec  !important ;
+}
+
+
+.p-autocomplete-input-token{
+padding-right: 200px !important;
+padding-left: 200px !important;
+border-radius: 25px !important;
+}
+
+
+
+.p-sidebar.p-sidebar-left {
+height: 100vh !important; /* Adjust the height as needed */
+overflow-y: auto !important; /* Enable vertical scrolling */
+}
+
+/* Customize the scrollbar track */
+.p-sidebar.p-sidebar-left::-webkit-scrollbar {
+width: 0px !important; /* Width of the scrollbar */
+}
+
+.custom-column{
+height: 300px;
+}
+
+.active{
+background-color: #2623C2 !important;
+}
+
+
+
+
+
+
+.bi{
+color: rgb(90,106,126) !important;
+padding-top: -5px;
+padding-bottom: -5px;
+}
+
+.bi-broadcast{
+font-size: 20px !important;
+font-weight: 900px;
+}
+
+.active .bi {
+color: #fff !important;
+}
+
+.active .pi{
+color: #fff !important;
+}
+
+.active h1{
+color: #fff !important;
+}
+
+
+
+.skeleton-card {
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, #f3f3f3 25%, #e0e0e0 50%, #f3f3f3 75%);
+background-size: 200% 100%;
+animation: skeleton-pulse 1.5s infinite;
+border-radius: 8px;
+}
+
+@keyframes skeleton-pulse {
+0% {
+  background-position: 200% 0;
+}
+100% {
+  background-position: -200% 0;
+}
+}
+
+
+.skeleton-circle {
+width: 100%;
+height: 100%;
+border-radius: 50%;
+background: linear-gradient(90deg, #f3f3f3 25%, #e0e0e0 50%, #f3f3f3 75%);
+background-size: 200% 100%;
+animation: skeleton-pulse1 1.5s infinite;
+
+}
+
+@keyframes skeleton-pulse1 {
+0% {
+  background-position: 200% 0;
+}
+100% {
+  background-position: -200% 0;
+}
+}
+
+
+[data-theme="dark"] .skeleton-card {
+background: linear-gradient(90deg, #f3f3f3 25%, #e0e0e0 50%, #f3f3f3 75%);
+}
+
+
+
+.p-autocomplete .p-autocomplete-multiple-container {
+padding: 0.375rem 0.75rem;
+gap: 0.5rem;
+border-radius: 25px !important;
+border: 1px solid #000 !important;
+}
+
+
+
+
+
+
+/*Remove Above styles*/
+.shadowfilter{
+filter: drop-shadow(6px 6px 8px rgba(0, 0, 0, 0.2));
+}
+
+
+.bg-pur
+{
+
+background-color: #D2E823 !important;
+}
+
+
+.bg-redish{
+background-color: #E9C0E9 !important;
+}
+.bg-red{
+background-color: #780016 !important;
+}
+.bg-blue{
+background-image: linear-gradient(to right, #004AAD, #0088FF);
+background-color: rgb(0, 74, 173) !important;
+}
+
+.btn-primary {
+background-color: rgb(38,35,194) !important;
+}
+
+
+.bg-logo{
+background-color: rgb(0,74,173) !important;
+}
+
+.hometitle{
+padding-left: 25px !important;
+font-size: 32px;
+font-weight: bolder;
+color: #fff;
+}
+.input-group-text{
+border: none !important;
+}
+.text-small{
+color: silver !important;
+}
+
+
+.container-fluid {
+min-height: 100vh; /* Allows the container to expand vertically */
+width: 100%;
+margin: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+font-family: Arial, sans-serif;
+display: flex;
+justify-content: center;
+align-items: start;
+overflow-y: hidden;
+}
+
+
+.bg-primary{
+background-color: rgb(38,35,193) !important;
+}
+
+.bg-sky{
+  background-color: rgb(162,160,255) !important;
+}
+
+
+.skeleton-card {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #f3f3f3 25%, #e0e0e0 50%, #f3f3f3 75%);
+  background-size: 200% 100%;
+  animation: skeleton-pulse 1.5s infinite;
+  border-radius: 8px;
+}
+
+@keyframes skeleton-pulse {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+
+.skeleton-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #f3f3f3 25%, #e0e0e0 50%, #f3f3f3 75%);
+  background-size: 200% 100%;
+  animation: skeleton-pulse1 1.5s infinite;
+
+}
+
+@keyframes skeleton-pulse1 {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

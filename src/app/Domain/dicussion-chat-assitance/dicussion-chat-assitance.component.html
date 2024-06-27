@@ -1,0 +1,472 @@
+<nav class="fixed-top bg-white py-2 text-center">
+  <div class="d-flex justify-content-start">
+  <img src="../../../assets/images/Screeens/button back.png" alt="" class="img-fluid ps-3 pe-5 pt-2"  style="height: 40px;" routerLink="/Discuter">
+  </div>
+  <img src="../../../assets/images/Point/spotted icono.png" alt="" class="img-fluid ps-3 mt-n7 pe-5"  style="height: 40px;" *ngIf="itemId=='agression'">
+  <img src="../../../assets/images/Point/spotted iconp.png" alt="" class="img-fluid ps-3 mt-n7 pe-5"  style="height: 40px;" *ngIf="itemId=='sexuel'">
+  <img src="../../../assets/images/Point/spotted iconred.png" alt="" class="img-fluid ps-3 mt-n7 pe-5"  style="height: 40px;" *ngIf="itemId=='vol'">
+  <img src="../../../assets/images/Point/spotted icon.png" alt="" class="img-fluid ps-3 mt-n7 pe-5"  style="height: 40px;" *ngIf="itemId=='chat'">
+
+  </nav>
+<div class="container-fluid bg-light">
+  <div class="row mt-13">
+    <div class="col-lg-12">
+      <div class="container mb-20">
+        <div class="row" *ngIf="loading">
+          <app-spinner></app-spinner>
+          <!-- <div class="col-lg-12" style="display: flex ; flex-direction: column;" >
+            <div class="card mb-3 card-left" style="width: 240px; height: 200ox;">
+              <div class="d-flex justify-content-between pt-3 px-4 mb-1">
+                <div class="d-flex">
+                  <span class="avatar avatar-sm me-2">
+                    <div class="rounded-circle skeleton-circle" style="height: 30px; width: 30px;">
+
+                    </div>
+                  </span>
+                  <div class="mt-1 skeleton-card" style="height: 10px;" ></div>
+                </div>
+                <div class="d-flex">
+                  <small class="skeleton-card pt-2"  style="height: 10px;" >
+
+                  </small>
+
+                </div>
+              </div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+            </div>
+            <div class="card mb-3 card-right" style="width: 240px; height: 200ox;">
+              <div class="d-flex justify-content-between pt-3 px-4 mb-1">
+                <div class="d-flex">
+                  <span class="avatar avatar-sm me-2">
+                    <div class="rounded-circle skeleton-circle" style="height: 30px; width: 30px;">
+
+                    </div>
+                  </span>
+                  <div class="mt-1 skeleton-card" style="height: 10px;" ></div>
+                </div>
+                <div class="d-flex">
+                  <small class="skeleton-card pt-2"  style="height: 10px;" >
+
+                  </small>
+
+                </div>
+              </div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+            </div>
+            <div class="card mb-3 card-left" style="width: 240px; height: 200ox;">
+              <div class="d-flex justify-content-between pt-3 px-4 mb-1">
+                <div class="d-flex">
+                  <span class="avatar avatar-sm me-2">
+                    <div class="rounded-circle skeleton-circle" style="height: 30px; width: 30px;">
+
+                    </div>
+                  </span>
+                  <div class="mt-1 skeleton-card" style="height: 10px;" ></div>
+                </div>
+                <div class="d-flex">
+                  <small class="skeleton-card pt-2"  style="height: 10px;" >
+
+                  </small>
+
+                </div>
+              </div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+            </div>
+            <div class="card mb-3 card-right" style="width: 240px; height: 200ox;">
+              <div class="d-flex justify-content-between pt-3 px-4 mb-1">
+                <div class="d-flex">
+                  <span class="avatar avatar-sm me-2">
+                    <div class="rounded-circle skeleton-circle" style="height: 30px; width: 30px;">
+
+                    </div>
+                  </span>
+                  <div class="mt-1 skeleton-card" style="height: 10px;" ></div>
+                </div>
+                <div class="d-flex">
+                  <small class="skeleton-card pt-2"  style="height: 10px;" >
+
+                  </small>
+
+                </div>
+              </div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+            </div>
+            <div class="card mb-3 card-left" style="width: 240px; height: 200ox;">
+              <div class="d-flex justify-content-between pt-3 px-4 mb-1">
+                <div class="d-flex">
+                  <span class="avatar avatar-sm me-2">
+                    <div class="rounded-circle skeleton-circle" style="height: 30px; width: 30px;">
+
+                    </div>
+                  </span>
+                  <div class="mt-1 skeleton-card" style="height: 10px;" ></div>
+                </div>
+                <div class="d-flex">
+                  <small class="skeleton-card pt-2"  style="height: 10px;" >
+
+                  </small>
+
+                </div>
+              </div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+            </div>
+            <div class="card mb-3 card-right" style="width: 240px; height: 200ox;">
+              <div class="d-flex justify-content-between pt-3 px-4 mb-1">
+                <div class="d-flex">
+                  <span class="avatar avatar-sm me-2">
+                    <div class="rounded-circle skeleton-circle" style="height: 30px; width: 30px;">
+
+                    </div>
+                  </span>
+                  <div class="mt-1 skeleton-card" style="height: 10px;" ></div>
+                </div>
+                <div class="d-flex">
+                  <small class="skeleton-card pt-2"  style="height: 10px;" >
+
+                  </small>
+
+                </div>
+              </div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+            </div>
+            <div class="card mb-3 card-left" style="width: 240px; height: 200ox;">
+              <div class="d-flex justify-content-between pt-3 px-4 mb-1">
+                <div class="d-flex">
+                  <span class="avatar avatar-sm me-2">
+                    <div class="rounded-circle skeleton-circle" style="height: 30px; width: 30px;">
+
+                    </div>
+                  </span>
+                  <div class="mt-1 skeleton-card" style="height: 10px;" ></div>
+                </div>
+                <div class="d-flex">
+                  <small class="skeleton-card pt-2"  style="height: 10px;" >
+
+                  </small>
+
+                </div>
+              </div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+            </div>
+            <div class="card mb-3 card-right" style="width: 240px; height: 200ox;">
+              <div class="d-flex justify-content-between pt-3 px-4 mb-1">
+                <div class="d-flex">
+                  <span class="avatar avatar-sm me-2">
+                    <div class="rounded-circle skeleton-circle" style="height: 30px; width: 30px;">
+
+                    </div>
+                  </span>
+                  <div class="mt-1 skeleton-card" style="height: 10px;" ></div>
+                </div>
+                <div class="d-flex">
+                  <small class="skeleton-card pt-2"  style="height: 10px;" >
+
+                  </small>
+
+                </div>
+              </div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+            </div>
+
+            <div class="card mb-3 card-left" style="width: 240px; height: 200ox;">
+              <div class="d-flex justify-content-between pt-3 px-4 mb-1">
+                <div class="d-flex">
+                  <span class="avatar avatar-sm me-2">
+                    <div class="rounded-circle skeleton-circle" style="height: 30px; width: 30px;">
+
+                    </div>
+                  </span>
+                  <div class="mt-1 skeleton-card" style="height: 10px;" ></div>
+                </div>
+                <div class="d-flex">
+                  <small class="skeleton-card pt-2"  style="height: 10px;" >
+
+                  </small>
+
+                </div>
+              </div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+              <div class="mt-1 skeleton-card"  style="height: 20px;"></div>
+            </div>
+          </div> -->
+        </div>
+        <div class="row" *ngIf="!loading">
+          <div class="col-lg-12" style="display: flex ; flex-direction: column;" *ngFor="let item of notifications; let i = index">
+            <div *ngIf="shouldDisplayDate(i)">
+              <div class="text-center mb-3">
+                <button class="btn bg-white rounded-4 py-2 px-4 mt-3">
+                  {{ getFormattedDate(item.timestamp) }}
+                </button>
+              </div>
+            </div>
+            <div class="card mb-3" [ngClass]="item.senderId == userId ? 'bg-primary card-left' : 'bg-white card-right'" style="min-width: 90%">
+              <div class="d-flex justify-content-between pt-3 px-4 mb-1">
+                <div class="d-flex">
+                  <!-- avatar varified badge -->
+                  <div class="position-relative me-5">
+                    <img [src]="item.profileImage" alt="" class="rounded-circle avatar-md" />
+                    <a href="#" class="position-absolute mt-2 ms-n3" data-bs-toggle="tooltip" data-placement="top" title="Verifed">
+                        <img src="../../../assets/images/Point/badge lvl1.png" alt="" height="30" width="30" />
+                    </a>
+                  </div>
+                  <!-- <span class="avatar avatar-sm me-2">
+                    <img [src]="item.profileImage" alt="" class="rounded-circle ">
+
+                  </span> -->
+                  <h4 class="mt-1" [ngClass]="item.senderId == userId ? 'text-white' : 'text-dark'">{{item.name}}</h4>
+                </div>
+                <div class="d-flex">
+                  <small class="small-text pt-2" [ngClass]="item.senderId == userId ? 'text-white' : 'text-dark'">
+                    {{ getFormattedTime(item.timestamp) }}
+                  </small>
+                  <i class="bi bi-check pe-2" style="font-size: 20px; color: #fff !important;" *ngIf="item.senderId==userId"></i>
+                  <i class="bi bi-check pe-2" style="font-size: 20px;" *ngIf="item.senderId!=userId"></i>
+                  <i class="bi bi-x" style="font-size: 20px;color: #fff !important;" *ngIf="item.senderId==userId" (click)="delete(item.id,item.attachmentId)"></i>
+                </div>
+              </div>
+              <div class="text-center p-1" style="max-height: 200px;" *ngIf="item.imageAttachment!=''">
+                <img [src]="item.imageAttachment" alt="" class="img-fluid chat-image">
+              </div>
+              <p class="text-dark text-start px-4 mt-1" [ngClass]="item.senderId == userId ? 'text-white' : 'text-dark'">
+                {{item.message}}
+              </p>
+              <br>
+              <p class="text-dark text-start px-4 mt-1" [ngClass]="item.senderId == userId ? 'text-white' : 'text-dark'" *ngIf="item.attachmentId!==''">
+               Detail  {{item.address}}
+              </p>
+              <a  [routerLink]="['/AddressLocation',item.attachmentId]"  class="text-dark text-start px-4 mt-1 pb-4" [ngClass]="item.senderId == userId ? 'text-white' : 'text-dark'" *ngIf="item.attachmentId!==''">
+                <i class="fa-solid fa-location-dot" style="font-size: 30px;"></i>
+               </a>
+            </div>
+          </div>
+
+
+
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!--Bottom Chat-->
+<form class="d-flex fixed-bottom bg-white py-4" [formGroup]="chatForm">
+  <div class="search-bar ps-4 py-2 pe-5 ms-3">
+    <button type="submit" class="btn btn-primary btn-icon btn-sm" (click)="sidebarVisible = true">
+      <i class="bi bi-plus mt-n1" style="font-size: 20px;color: #fff !important;"></i>
+    </button>
+    <input  type="text" class="form-control" placeholder="Write Something.." formControlName="message">
+  </div>
+  <img src="../../../assets/images/Point/sent icon.png" alt="" class="img-fluid px-4 mt-3" style="height: 25px;" (click)="SendMessage()">
+</form>
+
+
+
+<p-sidebar [(visible)]="sidebarVisible" position="bottom" styleClass="custom-sidebar p-sidebar-lg">
+  <div class="horizontal-buttons-container my-5">
+    <div class="text-center">
+      <input type="file" id="fileInput" (change)="onFileChange($event)" class="form-control" hidden #fileInput  accept="image/png, image/jpeg, image/gif" />
+      <button
+        type="button"
+        (click)="triggerFileInput(fileInput)"
+        class="btn btn-icon bg-primary p-4 border-4  shadow-lg"
+        style="border-radius: 15px;">
+        <i class="pi pi-paperclip" style="font-size: 25px; color: #fff !important;"></i>
+      </button>
+      <h6 class="ps-3" >Upload Images</h6>
+    </div>
+
+    <div class="text-center" *ngIf="loading">
+      <button
+        type="button"
+        class="btn btn-icon p-4 border-4  shadow-lg"
+        style="background-color: #9747FF; border-radius: 15px;">
+        <div class="spinner-border text-light" role="status"  >
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </button>
+
+    </div>
+
+    <span class="avatar avatar-xl d-inline-block mt-n3" *ngIf="imageUrl !=null && !loading">
+      <img [src]="imageUrl" alt="" class="rounded-circle" >
+    </span>
+
+  </div>
+  <div class="horizontal-buttons-container mb-5">
+    <div class="text-center">
+      <button
+        type="button"
+        (click)="setSignalType('Agression Sexuel')"
+        [class.active]="selectedSignalType === 'Agression Sexuel'"
+        class="btn btn-icon p-4 border-4  shadow-lg"
+        style="background-color: #9747FF; border-radius: 15px;">
+        <img src="../../../assets/images/Screeens/sss.png" alt="">
+      </button>
+      <h6 class="ps-3" [style.color]="selectedSignalType === 'Agression Sexuel' ? '#9747FF' : 'initial'">Agression Sexuel</h6>
+    </div>
+    <div class="text-center">
+      <button
+        type="button"
+        (click)="setSignalType('suspect')"
+        [class.active]="selectedSignalType === 'suspect'"
+        class="btn btn-icon p-4 border-4  shadow-lg"
+        style="background-color: #FFC52F; border-radius: 15px;">
+        <img src="../../../assets/images/Screeens/sss.png" alt="">
+      </button>
+      <h6 class="ps-3" [style.color]="selectedSignalType === 'suspect' ? '#FFC52F' : 'initial'">suspect</h6>
+    </div>
+    <div class="text-center">
+      <button
+        type="button"
+        (click)="setSignalType('Agression')"
+        [class.active]="selectedSignalType === 'Agression'"
+        class="btn btn-icon p-4 border-4  shadow-lg"
+        style="background-color: #FF7B31; border-radius: 15px;">
+        <img src="../../../assets/images/Screeens/sss.png" alt="">
+      </button>
+      <h6 class="ps-3" [style.color]="selectedSignalType === 'Agression' ? '#FF7B31' : 'initial'">Agression</h6>
+    </div>
+    <div class="text-center">
+      <button
+        type="button"
+        (click)="setSignalType('Vol')"
+        [class.active]="selectedSignalType === 'Vol'"
+        class="btn btn-icon p-4 border-4  shadow-lg"
+        style="background-color: #FF3131; border-radius: 15px;">
+        <img src="../../../assets/images/Screeens/sss.png" alt="">
+      </button>
+      <h6 class="" [style.color]="selectedSignalType === 'Vol' ? '#FF3131' : 'initial'">Vol</h6>
+    </div>
+
+
+
+
+  </div>
+</p-sidebar>
+
+
+<p-sidebar [(visible)]="sidebarVisible1" position="bottom" styleClass="custom-sidebar p-sidebar-lg">
+  <div class="horizontal-buttons-container mb-5" >
+    <div class="text-center">
+      <button
+        type="button"
+        class="btn btn-icon p-4 border-4  shadow-lg"
+        [style.backgroundColor]="getBackgroundColor(selectedSignalType)"
+        style="border-radius: 15px;">
+        <img src="../../../assets/images/Screeens/sss.png" alt="">
+      </button>
+      <h6 class="ps-3" >{{selectedSignalType}}</h6>
+    </div>
+  </div>
+  <div class="horizontal-buttons-container mb-1 row" *ngFor="let item of signalLists">
+    <a class="d-flex align-items-center mb-1 d-grid" (click)="customSwal(item.description,item.id,item.type)">
+      <div class="avatar avatar-circle rounded-4" style="height: 50px;width: 50px;" [style.backgroundColor]="getBackgroundColor(selectedSignalType)">
+        <span class="avatar-initials text-white">{{item.title.charAt(0)}}</span>
+      </div>
+      <div class="ms-3">
+        <span class="d-block h5 text-inherit mb-0">{{item.title}}<i class="tio-verified text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Earned extra bonus"></i></span>
+      </div>
+    </a>
+  </div>
+
+
+  <div class="horizontal-buttons-container mb-1" *ngIf="loading">
+    <a class="d-flex align-items-center" >
+      <div class="avatar bg-primary avatar-circle rounded-4">
+        <div class="skeleton-circle">
+
+        </div>
+      </div>
+      <div class="ms-3">
+        <span class="d-block h5 text-inherit mb-0">
+          <div class="skeleton-card" style="height: 5px;width:200px;">
+          </div>
+        </span>
+        <span class="d-block fs-6 text-body mt-1">
+          <div class="skeleton-card" style="height: 18px;width:220px;">
+          </div>
+        </span>
+      </div>
+    </a>
+  </div>
+  <div class="horizontal-buttons-container mb-1" *ngIf="loading">
+    <a class="d-flex align-items-center" >
+      <div class="avatar bg-primary avatar-circle rounded-4">
+        <div class="skeleton-circle">
+
+        </div>
+      </div>
+      <div class="ms-3">
+        <span class="d-block h5 text-inherit mb-0">
+          <div class="skeleton-card" style="height: 5px;width:200px;">
+          </div>
+        </span>
+        <span class="d-block fs-6 text-body mt-1">
+          <div class="skeleton-card" style="height: 18px;width:220px;">
+          </div>
+        </span>
+      </div>
+    </a>
+  </div>
+  <div class="horizontal-buttons-container mb-1" *ngIf="loading">
+    <a class="d-flex align-items-center" >
+      <div class="avatar bg-primary avatar-circle rounded-4">
+        <div class="skeleton-circle">
+
+        </div>
+      </div>
+      <div class="ms-3">
+        <span class="d-block h5 text-inherit mb-0">
+          <div class="skeleton-card" style="height: 5px;width:200px;">
+          </div>
+        </span>
+        <span class="d-block fs-6 text-body mt-1">
+          <div class="skeleton-card" style="height: 18px;width:220px;">
+          </div>
+        </span>
+      </div>
+    </a>
+  </div>
+  <div class="horizontal-buttons-container mb-1" *ngIf="loading">
+    <a class="d-flex align-items-center" >
+      <div class="avatar bg-primary avatar-circle rounded-4">
+        <div class="skeleton-circle">
+
+        </div>
+      </div>
+      <div class="ms-3">
+        <span class="d-block h5 text-inherit mb-0">
+          <div class="skeleton-card" style="height: 5px;width:200px;">
+          </div>
+        </span>
+        <span class="d-block fs-6 text-body mt-1">
+          <div class="skeleton-card" style="height: 18px;width:220px;">
+          </div>
+        </span>
+      </div>
+    </a>
+  </div>
+
+</p-sidebar>
+
+
+

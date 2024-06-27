@@ -1,0 +1,55 @@
+<nav class="fixed-top bg-white py-3 shadow">
+  <div class="d-flex justify-content-start text-center">
+  <img src="../../../assets/images/Screeens/Menu.png" alt="" class="img-fluid ps-3 pe-5"  style="height: 40px;" routerLink="/Menue">
+  <h1 class="text-center fw-bold ps-5">Discuter</h1>
+  </div>
+  </nav>
+<div class="container-fluid bg-light">
+  <div class="row mt-13">
+    <div class="col-lg-12">
+      <div class="col-lg-12">
+        <h1 class="px-4 pt-4 fw-bold" style="font-size: 32px;">Chat</h1>
+      </div>
+      <div class="full-width-container">
+        <a class="d-flex align-items-center py-5 bg-white" [routerLink]="['/Chat', 'chat']">
+          <img class="img-fluid ps-5" src="../../../assets/images/Point/spotted icon.png" alt="Image Description" >
+          <div class="ms-3">
+            <span class="d-block h3 text-inherit mb-0 fw-bold ">Assistance psychologique</span>
+            <span class="d-block fs-6 text-body pe-2">Pour vous prendre en charge en cas de choc psychologique</span>
+          </div>
+        </a>
+      </div>
+      <div class="col-lg-12">
+        <h1 class="px-4 pt-4 fw-bold" style="font-size: 32px;">Groupes</h1>
+      </div>
+      <div class="col-lg-12">
+        <a class="d-flex align-items-center py-5 bg-white"  [routerLink]="['/Chat', 'vol']">
+          <img class="img-fluid ps-5" src="../../../assets/images/Point/spotted iconred.png" alt="Image Description">
+          <div class="ms-3">
+            <span class="d-block h3 text-inherit mb-0 fw-bold" style="color: #FF3131;">Vol</span>
+            <span class="d-block fs-6 text-body pe-2">Discuter et échanger des informations avec d'autres spotters sur la thématique du Vol.</span>
+          </div>
+        </a>
+      </div>
+      <div class="col-lg-12">
+        <a class="d-flex align-items-center py-5 bg-white"  [routerLink]="['/Chat', 'agression']">
+          <img class="img-fluid ps-5" src="../../../assets/images/Point/spotted icono.png" alt="Image Description">
+          <div class="ms-3">
+            <span class="d-block h3 text-inherit mb-0 fw-bold" style="color: #FF7B31;">Agression</span>
+            <span class="d-block fs-6 text-body pe-2">Discuter et échanger des informations avec d'autres spotters sur la thématique des agressions.</span>
+          </div>
+        </a>
+      </div>
+      <div class="col-lg-12 mb-20">
+        <a class="d-flex align-items-center py-5 bg-white"  [routerLink]="['/Chat', 'sexuel']">
+          <img class="img-fluid ps-5" src="../../../assets/images/Point/spotted iconp.png" alt="Image Description">
+          <div class="ms-3">
+            <span class="d-block h3 text-inherit mb-0 fw-bold" style="color: #9747FF;">Agression sexuelle</span>
+            <span class="d-block fs-6 text-body pe-2">Discuter et échanger des informations avec d'autres spotters sur la thématique du agressions sexuelles.</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<app-bottom-navigation></app-bottom-navigation>

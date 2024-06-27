@@ -1,0 +1,26 @@
+<div *ngIf="center.lat!=0 && center.lng!=0">
+  <google-map
+  [center]="center"
+  [zoom]="zoom"
+  [options]="mapOptions"
+  [width]="screenWidth"
+  [height]="screenHeight"
+  (mapClick)="moveMap($event)"
+  (mapMousemove)="move($event)">
+ >
+  <map-marker
+    *ngFor="let marker of markers; let i = index"
+    [position]="marker.position"
+    [options]="marker.options"
+    [title]='marker.options.title || ""'
+    [icon]="marker.options.icon!"
+    (mapClick)="openInfoWindow(marker, i)">
+  </map-marker>
+
+</google-map>
+</div>
+
+
+
+
+

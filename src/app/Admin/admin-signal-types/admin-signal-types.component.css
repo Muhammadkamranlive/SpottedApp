@@ -1,0 +1,18 @@
+.scrollable-card {
+  height: 600px; /* Adjust the height as needed */
+  overflow-y: auto;
+}
+  /* Customize the scrollbar */
+  .scrollable-card::-webkit-scrollbar {
+    width: 1px;
+    margin: 0 !important;
+    padding-right: 0px !important;
+  }
+
+  .scrollable-card::-webkit-scrollbar-thumb {
+    background-color: #6c757d;
+    border-radius: 1px;
+  }
+.sb-icon{
+  color: tomato;
+}
