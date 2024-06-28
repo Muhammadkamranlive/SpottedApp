@@ -1,2 +1,2 @@
-export const  BaseUrl:string="https://localhost:7183"
+export const  BaseUrl:string="https://candidatecrm20240623173220.azurewebsites.net"
 
