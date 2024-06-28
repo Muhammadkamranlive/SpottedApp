@@ -29,11 +29,12 @@ export class SaferJourneyComponent {
   {
      if (this.priceId!=null)
      {
-       this.loading = true
+       this.loading = false
        this.router.navigate(["Upgrade/",this.priceId])
      }
      else
      {
+      this.loading = false
       this.messageService.showErrorAlert("No price id found");
      }
    }

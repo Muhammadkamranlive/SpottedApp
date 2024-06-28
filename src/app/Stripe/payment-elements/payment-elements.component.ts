@@ -73,51 +73,50 @@ export class PaymentElementsComponent implements OnInit {
   paying = signal(false);
 
   InitPayment(){
-    this.API
+    console.log(this.paymentElementForm.value);
+    if(this.paymentElementForm.valid){
+      this.API
     .create(
     "Payments/create-payment-intent",
-    {
-
-        email: this.paymentElementForm.get('email')?.value,
-        name: this.paymentElementForm.get('name')?.value,
-        address: this.paymentElementForm.get('address')?.value,
-        zipcode: this.paymentElementForm.get('zipcode')?.value,
-        city: this.paymentElementForm.get('city')?.value,
-        priceId: this.paymentElementForm.get('priceId')?.value
-    })
+    this.paymentElementForm.value
+    )
     .subscribe(pi => {
       this.elementsOptions.clientSecret = pi.clientSecret  as string;
     });
+    }
   }
 
   setPaymentDetails()
   {
-    if(this.itemId=="price_1PQYP7AsBlU4MIiY3qjxF7MC"){
-      this.planName ="5,99 € par semaine"
-      this.payment  ="5,99 €"
+    if(this.itemId=="price_1PVd1B096TMSX8WQua5mSi5j"){
+      this.planName ="5.99 € par semaine"
+      this.payment  ="5.99 €"
     }
-    else if(this.itemId=="price_1PQYQXAsBlU4MIiYQAVNrX4x")
+    else if(this.itemId=="price_1PVd4D096TMSX8WQeSGkDH4t")
     {
-      this.planName ="11,99 € par mois, soit seulement 0,44 € par jour"
-      this.payment  ="11,99 €"
+      this.planName ="11.99 € par mois, soit seulement 0,44 € par jour"
+      this.payment  ="11.99 €"
     }
   }
 
 
-  getUserDetail(uid:any)
+  getUserDetail(uid:any,Item:any)
   {
     this.loading=true;
     this.API.read(`Auth/getProfile?uid=${uid}`).subscribe
     (
       (response)=>{
         this.user    = response;
+        this.setPaymentDetails();
         this.paymentElementForm.patchValue({
           email:this.user.email,
           name:this.user.legalname,
           address:this.user.addresss,
           zipcode:this.user.postalCode,
-          city:this.user.city
+          city:this.user.city,
+          priceId:Item
         })
+        this.InitPayment();
         this.loading = false;
       }
       ,(
@@ -131,16 +130,12 @@ export class PaymentElementsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUserDetail(this.userId);
+
     this.route.params.subscribe(params => {
       this.itemId = params['id'];
-      this.paymentElementForm.patchValue({
-        priceId:this.itemId
-      })
-      this.setPaymentDetails();
-      if(this.itemId!=null){
-        this.InitPayment();
-      }
+      this.getUserDetail(this.userId,this.itemId);
+
+
     });
 
   }
@@ -148,7 +143,7 @@ export class PaymentElementsComponent implements OnInit {
   pay() {
     this.loading=true;
     this.paying.set(true);
-    // if (this.paying() || this.paymentElementForm.invalid) return;
+    //if (this.paying() || this.paymentElementForm.invalid) return;
 
     const { name, email, address, zipcode, city } = this.paymentElementForm.getRawValue();
 

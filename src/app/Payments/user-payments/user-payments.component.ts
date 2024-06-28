@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BaseApiService } from '../../Services/base-api.service';
 import { MessageService } from '../../Services/message.service';
 import { AuthService } from '../../Services/auth.service';
-import { PaymentSession } from '../../Models/Authentication/UserModel';
+import { InvoiceSummary, PaymentSession } from '../../Models/Authentication/UserModel';
 
 @Component({
   selector: 'app-user-payments',
@@ -11,10 +11,12 @@ import { PaymentSession } from '../../Models/Authentication/UserModel';
 })
 export class UserPaymentsComponent implements OnInit{
   loading :boolean=false;
-  TenantId:string=''
-  Payment:PaymentSession[]=[]
-  subtotall:number=0;
+  subtotall:number=0
+  Payments:InvoiceSummary[]=[]
   email:string
+  loadButton:boolean=false;
+  downloadurl:string=''
+  itemId:string=''
   constructor
   (
     private api:BaseApiService,
@@ -26,19 +28,45 @@ export class UserPaymentsComponent implements OnInit{
     this.email= this.auth.getLoggedEmail()
   }
 
+  DonwloadTenantsPayments(Invoice:string)
+  {
+    try
+    {
+      this.itemId=Invoice;
+      this.loadButton=true;
+      this.api.read(`Payments/DownloadInvoice?Invoice=${Invoice}`).subscribe(
+         (response)=>
+         {
+           this.downloadurl  = response.message;
+           this.loadButton   = false
+         },
+         (err)=>
+         {
+          this.loadButton    =false
+
+         }
+        )
+    }
+     catch (error)
+    {
+
+    }
+  }
 
   GetTenantsPayments(TenantId:string)
   {
     try
     {
          this.loading=true;
-         this.api.read(`Auth/GetClientPayments?email=${TenantId}`).subscribe(
+         this.api.read(`Payments/GetMyInvoice?customerId=${TenantId}`).subscribe(
          (response)=>
          {
-           this.Payment   = response;
-           this.subtotall = this.Payment.reduce((acc,res)=>acc+res.amount,0)
-           this.subtotall = this.subtotall/100
-           this.loading   = false;
+           this.loading    = false;
+           this.Payments   = response.result;
+           console.log(this.Payments)
+          //  this.subtotall  = this.Payments.reduce((acc,res)=>acc+res.amount,0)
+          //  this.subtotall  = this.subtotall
+
          },
          (err)=>
          {

@@ -83,6 +83,12 @@ const routes: Routes = [
     data: { roles: ['Administrator', 'User'] },
   },
   {
+    path: 'Upgrade/:id',
+    component: PaymentElementsComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Administrator', 'User'] },
+  },
+  {
     path: 'Nom',
     component: NomComponent,
   },
@@ -152,13 +158,6 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { roles: ['Administrator', 'User'] },
   },
-  {
-    path: 'Upgrade/:id',
-    component: PaymentElementsComponent,
-    canActivate: [AuthGuard],
-    data: { roles: ['Administrator', 'User'] },
-  },
-
   {
     path: 'Aide',
     component: AideComponent,

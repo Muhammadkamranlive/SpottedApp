@@ -15,6 +15,7 @@ export class ProfileAbendomentComponent {
   Email    !:string;
   res!:AuthResponseModel
   priceId!:string
+  showUpgradePage:boolean=false;
   constructor
   (
     private router: Router,
@@ -29,8 +30,9 @@ export class ProfileAbendomentComponent {
   {
      if (this.priceId!=null)
      {
-       this.loading = true
-       this.router.navigate(["Upgrade/",this.priceId])
+        this.loading         = true
+        this.showUpgradePage =true;
+        this.loading         =false;
      }
      else
      {

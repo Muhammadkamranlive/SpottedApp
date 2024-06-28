@@ -16,3 +16,7 @@ export const environmentFire = {
     measurementId: "G-DG3TPNXKT6"
   },
 };
+
+
+export const  Monthykey:string='price_1PVd4D096TMSX8WQeSGkDH4t';
+export const  weeklyKey:string='price_1PVd1B096TMSX8WQua5mSi5j';
