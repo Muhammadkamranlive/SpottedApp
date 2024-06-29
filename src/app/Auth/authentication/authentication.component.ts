@@ -12,11 +12,7 @@ import { Browser } from '@capacitor/browser';
 import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 import { Plugins } from '@capacitor/core';
 import { AuthResponseModel } from '../../Models/Authentication/AuthResponse';
-GoogleAuth.initialize({
-  clientId: '397350852908-5ubsfmeprfr2plu11gjcnrgiqaq8mu9b.apps.googleusercontent.com',
-  scopes: ['profile', 'email'],
-  grantOfflineAccess: true
-});
+
 @Component({
   selector: 'app-authentication',
   templateUrl: './authentication.component.html',
@@ -39,7 +35,11 @@ export class AuthenticationComponent implements OnInit{
      private afAuth: AngularFireAuth
   )
   {
-
+    GoogleAuth.initialize({
+      clientId: '397350852908-5ubsfmeprfr2plu11gjcnrgiqaq8mu9b.apps.googleusercontent.com',
+      scopes: ['profile', 'email'],
+      grantOfflineAccess: true
+    });
   }
 
 
@@ -176,6 +176,22 @@ export class AuthenticationComponent implements OnInit{
     } catch (error) {
       this.SocialLoading=false
       //this.messageService.showErrorAlert("System having issue with google login you may use custom email password.");
+    }
+  }
+
+  async googleSign() {
+    try {
+      const user = await GoogleAuth.signIn();
+      this.SocialLoginForm.patchValue({
+        email: user.email,
+        password:user.id,
+        socialLogin:"Yes"
+       });
+      this.Login(this.SocialLoginForm.value);
+
+    } catch (error) {
+      console.error('Error signing in with Google', error);
+      // Handle error, e.g., show error message
     }
   }
 

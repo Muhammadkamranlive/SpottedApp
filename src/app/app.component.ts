@@ -2,7 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './Services/auth.service';
-
+import { Plugins } from '@capacitor/core';
+const { GoogleAuth } = Plugins;
 
 @Component({
   selector: 'app-root',
@@ -10,13 +11,12 @@ import { AuthService } from './Services/auth.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent  implements OnInit{
-  title = 'Spotted';
+  constructor() {
+    this.initializeApp();
+  }
 
-  constructor(private router: Router,private auth:AuthService) {}
-  getUserHome(){
-    if(this.auth.isAuthenticated()){
-      this.router.navigate(['/SpottedHome'])
-    }
+  async initializeApp() {
+    await GoogleAuth['initialize']();
   }
   ngOnInit(): void {
    // this.getUserHome();

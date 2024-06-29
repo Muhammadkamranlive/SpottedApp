@@ -28,20 +28,8 @@ export class AuthenticateService {
   Credential!:SocialLogin
   // Google Sign-In
   async googleSignIn() {
-    try {
-      const googleUser = await GoogleAuth.signIn();
-      const credential = firebase.GoogleAuthProvider.credential(googleUser.authentication.idToken);
-      const result= await this.afAuth.signInWithCredential(credential);
-      if(result.user){
-         this.Credential.email    = result.user.email || ""
-         this.Credential.password = result.user.uid
-         return this.Credential;
-      }
-      return this.Credential;
-    } catch (error) {
-      var err='Error during Google login:', error
-      return err;
-    }
+    const provider = new firebase.GoogleAuthProvider();
+    return this.afAuth.signInWithPopup(provider);
   }
 
   async appleSignIn() {

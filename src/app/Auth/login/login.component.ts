@@ -10,11 +10,8 @@ import { Browser } from '@capacitor/browser';
 import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 import { Plugins } from '@capacitor/core';
 import { AuthResponseModel } from '../../Models/Authentication/AuthResponse';
-GoogleAuth.initialize({
-  clientId: '397350852908-5ubsfmeprfr2plu11gjcnrgiqaq8mu9b.apps.googleusercontent.com',
-  scopes: ['profile', 'email'],
-  grantOfflineAccess: true
-});
+import { AuthenticateService } from '../../Services/authenticate.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -36,9 +33,14 @@ export class LoginComponent implements OnInit {
       private messageService: MessageService,
       private afAuth: AngularFireAuth,
       private formBuilder:FormBuilder,
+      private auth:AuthenticateService
     ) {
 
-    this.loading = this.authService.loading;
+    GoogleAuth.initialize({
+      clientId: '397350852908-5ubsfmeprfr2plu11gjcnrgiqaq8mu9b.apps.googleusercontent.com',
+      scopes: ['profile', 'email'],
+      grantOfflineAccess: true
+    });
     this.userForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)])
@@ -127,6 +129,41 @@ export class LoginComponent implements OnInit {
     this.loading = this.authService.loading;
   }
 
+  async googleSignInPop() {
+    this.auth
+    .googleSignIn()
+    .then((result) => {
+       if(result.user)
+        {
+         this.SocialLoginForm.patchValue({
+          email:result.user.email,
+          password:result.user.uid,
+          socialLogin:"Yes"
+         });
+        this.Login(this.SocialLoginForm.value);
+      }
+    })
+    .catch((error) => {
+      console.error('Error during Google login:', error);
+    });
+
+  }
+
+  async googleSign() {
+    try {
+      const user = await GoogleAuth.signIn();
+      this.SocialLoginForm.patchValue({
+        email: user.email,
+        password:user.id,
+        socialLogin:"Yes"
+       });
+      this.Login(this.SocialLoginForm.value);
+
+    } catch (error) {
+      console.error('Error signing in with Google', error);
+      // Handle error, e.g., show error message
+    }
+  }
 
   async googleSignIn() {
     try {
@@ -145,7 +182,7 @@ export class LoginComponent implements OnInit {
       }
     } catch (error) {
       this.SocialLoading=false
-      //this.messageService.showErrorAlert("System having issue with google login you may use custom email password.");
+      this.messageService.showErrorAlert("System having issue with google login you may use custom email password."+error);
     }
   }
 
