@@ -3,6 +3,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Rout
 import { Observable } from 'rxjs';
 import { AuthService } from './Services/auth.service';
 import { RedirectionStateService } from './Services/redirection-state.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,17 @@ export class AuthGuard implements CanActivate {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private redirectionStateService: RedirectionStateService
-  ) {}
+    private redirectionStateService: RedirectionStateService,
+    private translate:TranslateService
+  ) {
+
+    this.onLanguageChange()
+  }
+
+  onLanguageChange() {
+    let lan=localStorage.getItem('selectedLanguage') || 'fr'
+    this.translate.setDefaultLang(lan);
+  }
 
   canActivate(
     route: ActivatedRouteSnapshot,

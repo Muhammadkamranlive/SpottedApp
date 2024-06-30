@@ -133,15 +133,7 @@ export class LoginComponent implements OnInit {
     this.auth
     .googleSignIn()
     .then((result) => {
-       if(result.user)
-        {
-         this.SocialLoginForm.patchValue({
-          email:result.user.email,
-          password:result.user.uid,
-          socialLogin:"Yes"
-         });
-        this.Login(this.SocialLoginForm.value);
-      }
+       console.log('sfsf')
     })
     .catch((error) => {
       console.error('Error during Google login:', error);
@@ -170,8 +162,9 @@ export class LoginComponent implements OnInit {
       this.SocialLoading=true
       const googleUser = await GoogleAuth.signIn();
       const credential = firebase.GoogleAuthProvider.credential(googleUser.authentication.idToken);
-      const result     = await this.afAuth.signInWithCredential(credential);
-      if(result.user){
+      const result     = await this.afAuth.signInWithPopup(credential);
+      if(result.user)
+      {
          this.SocialLoginForm.patchValue({
           email:result.user.email,
           password:result.user.uid,

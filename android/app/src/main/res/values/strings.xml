@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">spotted</string>
-    <string name="title_activity_main">spotted</string>
-    <string name="package_name">com.spotted.app</string>
-    <string name="custom_url_scheme">com.spotted.app</string>
-    <string name="server_client_id">397350852908-5ubsfmeprfr2plu11gjcnrgiqaq8mu9b.apps.googleusercontent.com</string>
-</resources>

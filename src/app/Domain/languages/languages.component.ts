@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-languages',
@@ -31,12 +32,18 @@ export class LanguagesComponent {
     'Tuvalu', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States of America', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Venezuela',
     'Vietnam', 'Yemen', 'Zambia', 'Zimbabwe'
   ];
-  constructor(private router: Router) { }
+  constructor(private router: Router,private translate: TranslateService) { }
   onSubmit() {
     this.loading=true;
     setTimeout(() => {
       this.loading=false;
       // this.router.navigate(['/Address']);
     }, 2000);
+  }
+
+  onLanguageChange(event: string) {
+    localStorage.setItem('selectedLanguage', event);
+    let lan=localStorage.getItem('selectedLanguage') || 'fr'
+    this.translate.setDefaultLang(lan);
   }
 }

@@ -26,21 +26,21 @@
             <h5 class="mt-n3">
               {{user.email}}
              </h5>
-             <a class="mt-n3" routerLink="/editProfile">View Profile</a>
+             <a class="mt-n3" routerLink="/editProfile">{{'VIEW_PROFILE' | translate}}</a>
           </div>
 
         </div>
     </div>
     <div class="col-lg-12 px-8">
       <h2 class="small-text">
-        Compte
+        {{'COMPTE' | translate}}
       </h2>
     </div>
     <div class="col-lg-12 px-4">
       <button class="btn g-grid w-100 mb-4  bg-white d-flex  justify-content-between  shadow rounded-4 " routerLink="/ProfileAbedonment">
         <div class="d-flex justify-content-between  pt-2">
           <img src="../../../assets/images/Point/3dicons (4).png" alt="" class="pe-1" style="height: 35px;width: 35px;">
-          <h4 class="pe-3 pt-1">Abonnements</h4>
+          <h4 class="pe-3 pt-1">{{'ABONNEMENTS' | translate}}</h4>
         </div>
         <i class="fa-solid fa-chevron-right pt-3" style="font-size: 20px;"></i>
       </button>
@@ -49,7 +49,7 @@
       <button class="btn g-grid w-100 mb-4  bg-white d-flex  justify-content-between  shadow rounded-4 " routerLink="/userPaymentClient">
         <div class="d-flex justify-content-between  pt-2">
           <img src="../../../../assets/images/Point/bill.png" alt="" class="pe-1" style="height: 35px;width: 35px;">
-          <h4 class="pe-3 pt-1">Payments</h4>
+          <h4 class="pe-3 pt-1">{{'PAYMENTS' | translate}}</h4>
         </div>
         <i class="fa-solid fa-chevron-right pt-3" style="font-size: 20px;"></i>
       </button>
@@ -58,7 +58,7 @@
       <button class="btn g-grid w-100 mb-4  bg-white d-flex  justify-content-between  shadow rounded-4 " routerLink="/Lanauges">
         <div class="d-flex justify-content-between  pt-2">
           <img src="../../../assets/images/Point/3dicons (3).png" alt="" class="pe-1" style="height: 35px;width: 35px;">
-          <h4 class="pe-3 mt-0">Pays et langues</h4>
+          <h4 class="pe-3 mt-0">{{'PAYS_ET_LANGUES' | translate}}</h4>
         </div>
         <i class="fa-solid fa-chevron-right pt-3" style="font-size: 20px;"></i>
       </button>
@@ -67,7 +67,7 @@
       <button class="btn g-grid w-100 mb-4  bg-white d-flex  justify-content-between  shadow rounded-4 " routerLink="/Notifications">
         <div class="d-flex justify-content-between  pt-2">
           <img src="../../../assets/images/Point/3dicons (2).png" alt="" class="pe-1" style="height: 35px;width: 35px;">
-          <h4 class="">Paramètres de notifications</h4>
+          <h4 class="">{{'PARAMETRES_DE_NOTIFICATIONS' | translate}}</h4>
         </div>
         <i class="fa-solid fa-chevron-right pt-3" style="font-size: 20px;"></i>
       </button>
@@ -76,7 +76,7 @@
       <button class="btn g-grid w-100 mb-4  bg-white d-flex  justify-content-between  shadow rounded-4 " routerLink="/userNotifications">
         <div class="d-flex justify-content-between  pt-2">
           <img src="../../../assets/images/Point/3dicons (2).png" alt="" class="pe-1" style="height: 35px;width: 35px;">
-          <h4 class="">Notifications</h4>
+          <h4 class="">{{'NOTIFICATIONS' | translate}}</h4>
         </div>
         <i class="fa-solid fa-chevron-right pt-3" style="font-size: 20px;"></i>
       </button>
@@ -85,21 +85,21 @@
       <a routerLink="/editProfile" class="btn g-grid w-100 mb-4  bg-white d-flex  justify-content-between  shadow rounded-4 ">
         <div class="d-flex justify-content-between  pt-2">
           <img src="../../../assets/images/Point/boy-front-color.png" alt="" class="pe-0" style="height: 35px;width: 35px;">
-          <h4 class="pe-3 pt-1">Modifier le profil</h4>
+          <h4 class="pe-3 pt-1">{{'MODIFIER_LE_PROFIL' | translate}}</h4>
         </div>
         <i class="fa-solid fa-chevron-right pt-3" style="font-size: 20px;"></i>
       </a>
     </div>
     <div class="col-lg-12 px-8">
       <h2 class="small-text">
-        Général
+        {{'GENERAL' | translate}}
       </h2>
     </div>
     <div class="col-lg-12 px-4">
       <a routerLink="/Aide" class="btn g-grid w-100 mb-4  bg-white d-flex  justify-content-between  shadow rounded-4 ">
         <div class="d-flex justify-content-between  pt-2">
           <img src="../../../assets/images/Point/Assistant.png" alt="" class="img-fluid pe-4">
-          <h4 class="pe-3 pt-1">Aide</h4>
+          <h4 class="pe-3 pt-1">{{'AIDE' | translate}}</h4>
         </div>
         <i class="fa-solid fa-chevron-right pt-3" style="font-size: 20px;"></i>
       </a>
@@ -108,7 +108,7 @@
       <a routerLink="/GCU" class="btn g-grid w-100 mb-4  bg-white d-flex  justify-content-between  shadow rounded-4 ">
         <div class="d-flex justify-content-between  pt-2">
           <img src="../../../assets/images/Point/3dicons (1).png" alt="" class="img-fluid pe-4">
-          <h4 class="pe-3 pt-1">CGU</h4>
+          <h4 class="pe-3 pt-1">{{'CGU' | translate}}</h4>
         </div>
         <i class="fa-solid fa-chevron-right pt-3" style="font-size: 20px;"></i>
       </a>
@@ -117,7 +117,7 @@
       <a (click)="shareContent()" class="btn g-grid w-100 mb-4  bg-white d-flex  justify-content-between  shadow rounded-4 ">
         <div class="d-flex justify-content-between  pt-2">
           <img src="../../../assets/images/Point/3dicons.png" alt="" class="img-fluid pe-4">
-          <h4 class="pe-3 pt-1">Partager</h4>
+          <h4 class="pe-3 pt-1">{{'PARTAGER' | translate}}</h4>
           <img src="../../../assets/images/Screeens/Frame 1.png" alt="" class="avatar" style="height: 30px;">
           <a href="" class="ms-n2 pt-1">potted</a>
         </div>

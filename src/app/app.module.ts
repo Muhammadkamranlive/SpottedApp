@@ -32,7 +32,7 @@ import { GCUComponent } from './Domain/gcu/gcu.component';
 import { LanguagesComponent } from './Domain/languages/languages.component';
 import { NotificationsComponent } from './Domain/notifications/notifications.component';
 import { StatisticsComponent } from './Domain/statistics/statistics.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { AuthService } from './Services/auth.service';
 import { ImageUploadService } from './Services/image-upload-service.service';
@@ -77,7 +77,12 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { LoginTestComponent } from './Test/login-test/login-test.component';
 import { UserNotificationsComponent } from './Domain/user-notifications/user-notifications.component';
 import { UserPaymentsComponent } from './Payments/user-payments/user-payments.component';
-
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+// Translation loader function
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -143,6 +148,13 @@ import { UserPaymentsComponent } from './Payments/user-payments/user-payments.co
     NgOtpInputModule,
     SidebarModule,
     AccordionModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
     NgxStripeModule.forRoot(),
     AngularFireModule.initializeApp(environmentFire.firebase),
     JwtModule.forRoot({
@@ -162,6 +174,7 @@ import { UserPaymentsComponent } from './Payments/user-payments/user-payments.co
   providers: [
     JwtHelperService,
     AuthService,
+    TranslateService,
     DatePipe,
     {
       provide: HTTP_INTERCEPTORS,

@@ -16,6 +16,7 @@ import {
   SignInWithAppleResponse,
   SignInWithAppleOptions,
 } from '@capacitor-community/apple-sign-in';
+import { MessageService } from './message.service';
 
 
 
@@ -24,12 +25,19 @@ import {
 })
 export class AuthenticateService {
 
-  constructor(private afAuth: AngularFireAuth) { }
+  constructor(private afAuth: AngularFireAuth,private mess:MessageService) { }
   Credential!:SocialLogin
   // Google Sign-In
   async googleSignIn() {
-    const provider = new firebase.GoogleAuthProvider();
-    return this.afAuth.signInWithPopup(provider);
+    try {
+      const googleUser = await GoogleAuth.signIn();
+      const credential = firebase.GoogleAuthProvider.credential(googleUser.authentication.idToken);
+      const res = await this.afAuth.signInWithCredential(credential);
+      this.mess.showInfoAlert(res.user?.displayName||"dssf");
+    } catch (error) {
+       alert(error)
+
+    }
   }
 
   async appleSignIn() {
